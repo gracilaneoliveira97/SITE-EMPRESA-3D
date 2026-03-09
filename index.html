@@ -9,32 +9,53 @@
 <style>
 
 body{
-font-family: Arial;
+font-family: Arial, sans-serif;
 margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#111;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:20px;
+font-weight:bold;
 }
 
 .menu{
-font-size:30px;
-padding:15px;
+font-size:28px;
 cursor:pointer;
 }
 
 .opcoes{
 display:none;
-background:#f2f2f2;
-padding:10px;
+background:#222;
+color:white;
 }
 
 .opcoes div{
-padding:10px;
+padding:15px;
+border-bottom:1px solid #444;
 cursor:pointer;
+}
+
+.opcoes div:hover{
+background:#333;
 }
 
 .secao{
 display:none;
-padding:20px;
-background:#fafafa;
-border-top:1px solid #ddd;
+padding:30px;
+background:white;
+margin:20px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 </style>
@@ -43,7 +64,13 @@ border-top:1px solid #ddd;
 
 <body>
 
+<header>
+
+<div class="logo">Empresa 3D</div>
+
 <div class="menu" onclick="abrirMenu()">☰</div>
+
+</header>
 
 <div id="menuOpcoes" class="opcoes">
 
@@ -56,12 +83,12 @@ border-top:1px solid #ddd;
 
 <div id="sobre" class="secao">
 <h2>Sobre a empresa</h2>
-<p>Aqui vai a história da empresa.</p>
+<p>Aqui vai a história da empresa e o que ela faz com impressão 3D.</p>
 </div>
 
 <div id="portfolio" class="secao">
 <h2>Portfólio</h2>
-<p>Aqui vão imagens dos trabalhos 3D.</p>
+<p>Aqui você pode colocar fotos dos trabalhos feitos.</p>
 </div>
 
 <div id="manutencao" class="secao">
@@ -71,12 +98,13 @@ border-top:1px solid #ddd;
 
 <div id="contato" class="secao">
 <h2>Contato</h2>
-<p>WhatsApp: colocar número</p>
+<p>WhatsApp: coloque o número aqui</p>
 </div>
 
 <script>
 
 function abrirMenu(){
+
 let menu = document.getElementById("menuOpcoes");
 
 if(menu.style.display === "block"){
@@ -84,6 +112,7 @@ menu.style.display = "none";
 }else{
 menu.style.display = "block";
 }
+
 }
 
 function toggle(secao){
