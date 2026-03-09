@@ -1,21 +1,104 @@
-HTML
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Empresa De Empressao 3D</title>
-  </head>
+<title>Empresa de Impressão 3D</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+}
+
+.menu{
+font-size:30px;
+padding:15px;
+cursor:pointer;
+}
+
+.opcoes{
+display:none;
+background:#f2f2f2;
+padding:10px;
+}
+
+.opcoes div{
+padding:10px;
+cursor:pointer;
+}
+
+.secao{
+display:none;
+padding:20px;
+background:#fafafa;
+border-top:1px solid #ddd;
+}
+
+</style>
+
+</head>
+
 <body>
-  <h1>Empresa de Impressao 3D</h1>
-  <p>Bem Vindo ao site da Nossa empressa.</p>
-  <h2>Sobre a empresa</h2>
-  <p>aqui vai a historia da empresa e as informaçoes sobre os serviços de impressao 3D.</p>
-  <h2>contato</h2>
-  <p>
-    whatsApp: (colocar o numero aqui)
-  </p>
-  
+
+<div class="menu" onclick="abrirMenu()">☰</div>
+
+<div id="menuOpcoes" class="opcoes">
+
+<div onclick="toggle('sobre')">Sobre</div>
+<div onclick="toggle('portfolio')">Portfólio</div>
+<div onclick="toggle('manutencao')">Manutenção</div>
+<div onclick="toggle('contato')">Contato</div>
+
+</div>
+
+<div id="sobre" class="secao">
+<h2>Sobre a empresa</h2>
+<p>Aqui vai a história da empresa.</p>
+</div>
+
+<div id="portfolio" class="secao">
+<h2>Portfólio</h2>
+<p>Aqui vão imagens dos trabalhos 3D.</p>
+</div>
+
+<div id="manutencao" class="secao">
+<h2>Manutenção</h2>
+<p>Informações sobre manutenção de impressoras 3D.</p>
+</div>
+
+<div id="contato" class="secao">
+<h2>Contato</h2>
+<p>WhatsApp: colocar número</p>
+</div>
+
+<script>
+
+function abrirMenu(){
+let menu = document.getElementById("menuOpcoes");
+
+if(menu.style.display === "block"){
+menu.style.display = "none";
+}else{
+menu.style.display = "block";
+}
+}
+
+function toggle(secao){
+
+let elemento = document.getElementById(secao);
+
+if(elemento.style.display === "block"){
+elemento.style.display = "none";
+}else{
+elemento.style.display = "block";
+}
+
+}
+
+</script>
+
 </body>
 </html>
