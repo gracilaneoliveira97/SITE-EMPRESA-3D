@@ -15,12 +15,15 @@ background:#f4f4f4;
 }
 
 header{
-background:#111;
-color:white;
-padding:15px;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+z-index:10;
 }
 
 .logo{
@@ -29,20 +32,29 @@ font-weight:bold;
 }
 
 .menu{
-font-size:28px;
+font-size:30px;
 cursor:pointer;
-}
-
-.opcoes{
-display:none;
-background:#222;
 color:white;
 }
 
+.opcoes{
+position:fixed;
+top:0;
+right:-250px;
+width:250px;
+height:100%;
+background:#222;
+color:white;
+transition:0.3s;
+z-index:20;
+padding-top:60px;
+}
+
 .opcoes div{
-padding:15px;
+padding:20px;
 border-bottom:1px solid #444;
 cursor:pointer;
+font-size:18px;
 }
 
 .opcoes div:hover{
@@ -100,6 +112,10 @@ border-radius:50%;
 text-decoration:none;
 box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
+ 
+  .logo img {
+   height:50px;
+}
 
 </style>
 
@@ -109,7 +125,9 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
 <header>
 
-<div class="logo">Empresa 3D</div>
+<div class="logo">
+ <img src="logo.png" alt="Logo da Empresa">
+</div>
 
 <div class="menu" onclick="abrirMenu()">☰</div>
 
@@ -163,10 +181,10 @@ function abrirMenu(){
 
 let menu = document.getElementById("menuOpcoes");
 
-if(menu.style.display === "block"){
-menu.style.display = "none";
+if(menu.style.right === "0px"){
+menu.style.right = "-250px";
 }else{
-menu.style.display = "block";
+menu.style.right = "0px";
 }
 
 }
