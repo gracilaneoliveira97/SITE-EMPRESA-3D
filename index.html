@@ -12,6 +12,7 @@ body{
 font-family: Arial, sans-serif;
 margin:0;
 background:#f4f4f4;
+overflow-x:hidden;
 }
 
 header{
@@ -19,11 +20,12 @@ position:absolute;
 top:0;
 left:0;
 width:100%;
-padding:20px;
+padding:15px 20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 z-index:10;
+box-sizing:border-box;
 }
 
 .logo{
@@ -114,7 +116,7 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
  
   .logo img {
-   height:50px;
+   height:35px;
 }
 
 </style>
@@ -191,16 +193,30 @@ menu.style.right = "0px";
 
 function toggle(secao){
 
+let secoes = document.querySelectorAll(".secao");
+
+secoes.forEach(function(s){
+s.style.display = "none";
+});
+
 let elemento = document.getElementById(secao);
-
-if(elemento.style.display === "block"){
-elemento.style.display = "none";
-}else{
 elemento.style.display = "block";
-}
+
+let menu = document.getElementbyId("menuOpcoes");
+menu.style.right = "-250px";
 
 }
- 
+
+document.addEventListener("click", function(event){
+
+let menu = document.getElementById("menuOpcoes");
+let botao = document.querySelector(".menu");
+
+if(!menu.contains(event.target) && !botao.contains(event.target)){
+menu.style.right = "-250px";
+}
+
+});
 </script>
 
 </body>
