@@ -204,6 +204,7 @@ elemento.style.display = "block";
 
 let menu = document.getElementbyId("menuOpcoes");
 menu.style.right = "-250px";
+  
 
 }
 
@@ -214,6 +215,11 @@ let botao = document.querySelector(".menu");
 
 if(!menu.contains(event.target) && !botao.contains(event.target)){
 menu.style.right = "-250px";
+
+let secoes = document.querySelectorAll(".secao");
+  secoes.forEach(function(s){
+  s.style.display = "nome";
+  });
 }
 
 });
