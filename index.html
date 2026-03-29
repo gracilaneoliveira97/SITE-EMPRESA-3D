@@ -52,33 +52,6 @@ z-index:20;
 padding-top:60px;
 }
 
-.opcoes div{
-padding:20px;
-border-bottom:1px solid #444;
-cursor:pointer;
-font-size:18px;
-}
-
-.opcoes div:hover{
-background:#333;
-}
-
-.secao{
-max-height:0;
-overflow:hidden;
-transition:max-height 0.5s ease;
-padding:0 30px;
-background:white;
-margin:0 20px;
-border-radius:8px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-.secao.ativa{
-max-height:500px;
-padding:30px;
-margin:20px;
-}
   /*bANNER INICIAL*/
   .banner{
 width:100%;
@@ -126,7 +99,29 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
   .logo img {
    height:35px;
 }
+.item{
+border-bottom:1px solid #444;
+}
 
+.titulo{
+padding:20px;
+cursor:pointer;
+font-size:18px;
+}
+
+.conteudo{
+max-height:0;
+overflow:hidden;
+transition:max-height 0.4s ease;
+background:#333;
+padding:0 20px;
+font-size:15px;
+}
+
+.item.ativo .conteudo{
+max-height:200px;
+padding:15px 20px;
+}
 </style>
 
 </head>
@@ -153,34 +148,38 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
   </div>
   <!--FIM DO BANER-->
   
-  <div id="menuOpcoes" class="opcoes">
+ <div id="menuOpcoes" class="opcoes">
 
-<div onclick="toggle('sobre')">Sobre</div>
-<div onclick="toggle('portfolio')">Portfólio</div>
-<div onclick="toggle('manutencao')">Manutenção</div>
-<div onclick="toggle('contato')">Contato</div>
+  <div class="item">
+    <div class="titulo">Sobre</div>
+    <div class="conteudo">
+      <p>Aqui vai a história da empresa e o que ela faz com impressão 3D.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="titulo">Portfólio</div>
+    <div class="conteudo">
+      <p>Aqui você pode colocar fotos dos trabalhos feitos.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="titulo">Manutenção</div>
+    <div class="conteudo">
+      <p>Informações sobre manutenção de impressoras 3D.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="titulo">Contato</div>
+    <div class="conteudo">
+      <p>WhatsApp: coloque o número aqui</p>
+    </div>
+  </div>
 
 </div>
 
-<div id="sobre" class="secao">
-<h2>Sobre a empresa</h2>
-<p>Aqui vai a história da empresa e o que ela faz com impressão 3D.</p>
-</div>
-
-<div id="portfolio" class="secao">
-<h2>Portfólio</h2>
-<p>Aqui você pode colocar fotos dos trabalhos feitos.</p>
-</div>
-
-<div id="manutencao" class="secao">
-<h2>Manutenção</h2>
-<p>Informações sobre manutenção de impressoras 3D.</p>
-</div>
-
-<div id="contato" class="secao">
-<h2>Contato</h2>
-<p>WhatsApp: coloque o número aqui</p>
-</div>
 <a href="https://wa.me/5511999999999" class="whatsapp" target="_blank">
 💬
 </a>
@@ -199,47 +198,39 @@ menu.style.right = "0px";
 
 }
 
-function toggle(secao){
+const titulos = document.querySelectorAll(".titulo");
+const itens = document.querySelectorAll(".item");
 
-let elemento = document.getElementById(secao);
-let jaEstaAberta = elemento.classList.contains("ativa");
+titulos.forEach(titulo => {
+  titulo.addEventListener("click", function(e){
+    e.stopPropagation();
 
-// fecha todas
-let secoes = document.querySelectorAll(".secao");
-secoes.forEach(function(s){
-s.classList.remove("ativa");
+    let item = this.parentElement;
+    let jaAberto = item.classList.contains("ativo");
+
+    // fecha todos
+    itens.forEach(i => i.classList.remove("ativo"));
+
+    // abre só se não estava aberto
+    if(!jaAberto){
+      item.classList.add("ativo");
+    }
+  });
 });
 
-// se não estava aberta, abre
-if(!jaEstaAberta){
-elemento.classList.add("ativa");
-}
-
-// fecha o menu lateral
-let menu = document.getElementById("menuOpcoes");
-menu.style.right = "-250px";
-}
   
-// impede que clique dentro do menu feche tudo
-let menuOpcoes = document.getElementById("menuOpcoes");
-menuOpcoes.addEventListener("click", function(event){
-event.stopPropagation();
+  let menuOpcoes = document.getElementById("menuOpcoes");
+menuOpcoes.addEventListener("click", function(e){
+  e.stopPropagation();
 });
-  
-document.addEventListener("click", function(event){
+// clicar fora fecha tudo
+document.addEventListener("click", function(e){
+  let menu = document.getElementById("menuOpcoes");
 
-let menu = document.getElementById("menuOpcoes");
-let botao = document.querySelector(".menu");
-
-if(!menu.contains(event.target) && !botao.contains(event.target)){
-menu.style.right = "-250px";
-
-let secoes = document.querySelectorAll(".secao");
-secoes.forEach(function(s){
-s.classList.remove("ativa");
-});
-}
-
+  if(!menu.contains(e.target)){
+    itens.forEach(i => i.classList.remove("ativo"));
+    menu.style.right = "-250px";
+  }
 });
   
 </script>
