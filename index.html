@@ -187,15 +187,15 @@ padding:15px 20px;
 <script>
 
 function abrirMenu(){
+  let menu = document.getElementById("menuOpcoes");
 
-let menu = document.getElementById("menuOpcoes");
-
-if(menu.style.right === "0px"){
-menu.style.right = "-250px";
-}else{
-menu.style.right = "0px";
-}
-
+  if(menu.classList.contains("aberto")){
+    menu.style.right = "-250px";
+    menu.classList.remove("aberto");
+  } else {
+    menu.style.right = "0px";
+    menu.classList.add("aberto");
+  }
 }
 
 const titulos = document.querySelectorAll(".titulo");
