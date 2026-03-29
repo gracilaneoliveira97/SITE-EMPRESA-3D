@@ -42,15 +42,21 @@ color:white;
 .opcoes{
 position:fixed;
 top:0;
-right:-250px;
+right:-0;
 width:250px;
 height:100%;
 background:#222;
 color:white;
-transition:0.3s;
+transition:0.3s ease;
+transform:translatex(100%);
 z-index:9999;
 padding-top:60px;
 }
+
+  .opcoes.aberto{
+transform:translateX(0);
+}
+
 
   /*bANNER INICIAL*/
   .banner{
@@ -186,56 +192,47 @@ padding:15px 20px;
 </a>
   
 <script>
-  
 document.addEventListener("DOMContentLoaded", function(){
-  
-function abrirMenu(){
-  let menu = document.getElementById("menuOpcoes");
 
-  if(menu.classList.contains("aberto")){
-    menu.style.right = "-250px";
-    menu.classList.remove("aberto");
-  } else {
-    menu.style.right = "0px";
-    menu.classList.add("aberto");
+  function abrirMenu(){
+    let menu = document.getElementById("menuOpcoes");
+    menu.classList.toggle("aberto");
   }
-}
 
-const titulos = document.querySelectorAll(".titulo");
-const itens = document.querySelectorAll(".item");
+  // deixa a função global pro onclick funcionar
+  window.abrirMenu = abrirMenu;
 
-titulos.forEach(titulo => {
-  titulo.addEventListener("click", function(e){
+  const titulos = document.querySelectorAll(".titulo");
+  const itens = document.querySelectorAll(".item");
+  const menu = document.getElementById("menuOpcoes");
+
+  titulos.forEach(titulo => {
+    titulo.addEventListener("click", function(e){
+      e.stopPropagation();
+
+      let item = this.parentElement;
+      let jaAberto = item.classList.contains("ativo");
+
+      itens.forEach(i => i.classList.remove("ativo"));
+
+      if(!jaAberto){
+        item.classList.add("ativo");
+      }
+    });
+  });
+
+  menu.addEventListener("click", function(e){
     e.stopPropagation();
+  });
 
-    let item = this.parentElement;
-    let jaAberto = item.classList.contains("ativo");
-
-    // fecha todos
-    itens.forEach(i => i.classList.remove("ativo"));
-
-    // abre só se não estava aberto
-    if(!jaAberto){
-      item.classList.add("ativo");
+  document.addEventListener("click", function(e){
+    if(!menu.contains(e.target)){
+      itens.forEach(i => i.classList.remove("ativo"));
+      menu.classList.remove("aberto");
     }
   });
-});
 
-  
-  let menuOpcoes = document.getElementById("menuOpcoes");
-menuOpcoes.addEventListener("click", function(e){
-  e.stopPropagation();
 });
-// clicar fora fecha tudo
-document.addEventListener("click", function(e){
-  let menu = document.getElementById("menuOpcoes");
-
-  if(!menu.contains(e.target)){
-    itens.forEach(i => i.classList.remove("ativo"));
-    menu.style.right = "-250px";
-  }
-});
-  
 </script>
 
 </body>
