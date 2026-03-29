@@ -64,12 +64,20 @@ background:#333;
 }
 
 .secao{
-display:none;
-padding:30px;
+max-height:0;
+overflow:hidden;
+transition:max-height 0.5s ease;
+padding:0 30px;
 background:white;
-margin:20px;
+margin:0 20px;
 border-radius:8px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.secao.ativa{
+max-height:500px;
+padding:30px;
+margin:20px;
 }
   /*bANNER INICIAL*/
   .banner{
@@ -195,18 +203,20 @@ function toggle(secao){
 
 let secoes = document.querySelectorAll(".secao");
 
+// fecha todas
 secoes.forEach(function(s){
-s.style.display = "none";
+s.classList.remove("ativa");
 });
 
+// abre a clicada
 let elemento = document.getElementById(secao);
-elemento.style.display = "block";
+elemento.classList.add("ativa");
 
-let menu = document.getElementbyId("menuOpcoes");
+// fecha o menu lateral
+let menu = document.getElementById("menuOpcoes");
 menu.style.right = "-250px";
-  
-
 }
+  
 
 document.addEventListener("click", function(event){
 
@@ -217,12 +227,13 @@ if(!menu.contains(event.target) && !botao.contains(event.target)){
 menu.style.right = "-250px";
 
 let secoes = document.querySelectorAll(".secao");
-  secoes.forEach(function(s){
-  s.style.display = "nome";
-  });
+secoes.forEach(function(s){
+s.classList.remove("ativa");
+});
 }
 
 });
+  
 </script>
 
 </body>
