@@ -203,9 +203,9 @@ function abrirMenu(){
   const itens = document.querySelectorAll(".item");
   const menu = document.getElementById("menuOpcoes");
  
-  document.querySelector(".menu").addEventListener("click", function(e){
+ document.querySelector(".menu").addEventListener("click", function(e){
   e.stopPropagation();
-  menu.classList.toggle("aberto");
+  menu.classList.add("aberto"); 
 });
 
   titulos.forEach(titulo => {
@@ -227,12 +227,12 @@ function abrirMenu(){
     e.stopPropagation();
   });
 
-  document.addEventListener("click", function(e){
-    if(!menu.contains(e.target)){
-      itens.forEach(i => i.classList.remove("ativo"));
-      menu.classList.remove("aberto");
-    }
-  });
+ document.addEventListener("click", function(e){
+  if(!menu.contains(e.target) && !e.target.classList.contains("menu")){
+    itens.forEach(i => i.classList.remove("ativo"));
+    menu.classList.remove("aberto");
+  }
+});
 
 });
 </script>
