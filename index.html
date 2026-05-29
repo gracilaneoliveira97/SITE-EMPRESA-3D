@@ -60,12 +60,13 @@ overflow-x:hidden;
   /*bANNER INICIAL*/
   .banner{
 width:95%;
-mergin:20px auto;
+margin:20px auto;
 height:420px;
 position:relative;
 overflow:hidden;
 margin-top:10px;
 border-radius:20px;
+display:block;
 }
 
 .slides{
@@ -80,7 +81,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 opacity:0;
-transition:opacity 1s ease;
+transition:opacity 1.8s ease-in-out;
 filter:brightness(0.75);
 }
 
@@ -160,24 +161,76 @@ font-size:15px;
 max-height:200px;
 padding:15px 20px;
 }
-  .sobre{
+ .sobre{
+width:100%;
+padding:120px 0;
+background:#050505;
+}
+
+.sobre-container{
 width:85%;
-margin:80px auto;
+margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.sobre-texto{
+max-width:900px;
+text-align:center;
+padding:0 20px;
+}
+
+.destaque{
+color:#d4af37;
+font-size:15px;
+letter-spacing:4px;
+display:block;
+margin-bottom:20px;
+}
+
+.sobre-texto h1{
+font-size:52px;
+line-height:1.2;
+margin-bottom:35px;
+color:#fff;
+}
+
+.sobre-texto p{
+font-size:20px;
+line-height:1.9;
+color:#bdbdbd;
+margin-bottom:25px;
+}
+  .galeria{
+width:90%;
+margin:100px auto;
 text-align:center;
 }
 
-.sobre h1{
+.galeria h1{
 font-size:42px;
 color:#d4af37;
-margin-bottom:30px;
-letter-spacing:2px;
+margin-bottom:50px;
 }
 
-.sobre p{
-font-size:18px;
-line-height:1.8;
-color:#ddd;
-margin-bottom:25px;
+.grid-galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.grid-galeria img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+transition:0.4s;
+cursor:pointer;
+}
+
+.grid-galeria img:hover{
+transform:scale(1.03);
 }
 </style>
 
@@ -211,27 +264,53 @@ margin-bottom:25px;
 </div>
   <!--FIM DO BANER-->
 
-  <section class="sobre">
+<section class="sobre">
 
-  <h1>TECNOLOGIA, CRIATIVIDADE E PRECISÃO</h1>
+  <div class="sobre-container">
 
-  <p>
-    A 3D Have é uma empresa especializada em impressão 3D.
-    Embora seja uma marca nova no mercado, nossa equipe possui
-    mais de 3 anos de experiência técnica no desenvolvimento
-    de projetos personalizados e soluções criativas.
-  </p>
+    <div class="sobre-texto">
 
-  <p>
-    Produzimos peças de engenharia, troféus, action figures,
-    Funko Pops personalizados, peças demonstrativas, chaveiros
-    e diversos outros produtos sob medida.
-  </p>
+      <span class="destaque">SOBRE A EMPRESA</span>
 
-  <p>
-    Trabalhamos unindo tecnologia, criatividade e precisão
-    para transformar ideias em realidade.
-  </p>
+      <h1>
+        Transformamos ideias em realidade através da impressão 3D
+      </h1>
+
+      <p>
+        A 3D Have é especializada em impressão 3D personalizada,
+        desenvolvendo soluções criativas, peças técnicas e produtos
+        exclusivos com alta qualidade e precisão.
+      </p>
+
+      <p>
+        Mesmo sendo uma marca nova no mercado, nossa equipe possui
+        mais de 3 anos de experiência no desenvolvimento de projetos
+        sob medida, unindo tecnologia, criatividade e inovação.
+      </p>
+
+      <p>
+        Produzimos action figures, troféus, peças de engenharia,
+        chaveiros, personalizados e diversos outros projetos únicos.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+  
+  <section class="galeria">
+
+  <h1>PROJETOS DESENVOLVIDOS</h1>
+
+  <div class="grid-galeria">
+
+    <img src="galeria1.jpg">
+    <img src="galeria2.jpg">
+    <img src="galeria3.jpg">
+    <img src="galeria4.jpg">
+
+  </div>
 
 </section>
   
