@@ -60,13 +60,44 @@ overflow-x:hidden;
   /*bANNER INICIAL*/
   .banner{
 width:100%;
-height:350px;
-background-image:url("https://via.placeholder.com/1200x350");
-background-size:cover;
-background-position:center;
+height:420px;
 position:relative;
-z-index:1;
+overflow:hidden;
 margin-top:10px;
+border-radius:20px;
+}
+
+.slides{
+width:100%;
+height:100%;
+position:relative;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s ease;
+filter:brightness(0.75);
+}
+
+.slide.active{
+opacity:1;
+}
+
+.pontos{
+position:absolute;
+bottom:15px;
+width:100%;
+text-align:center;
+z-index:10;
+}
+
+.pontos span.ativo{
+opacity:1;
+transform:scale(1.2);
 }
 
 .pontos{
@@ -78,12 +109,13 @@ text-align:center;
 
 .pontos span{
 display:inline-block;
-width:10px;
-height:10px;
+width:12px;
+height:12px;
 background:white;
 border-radius:50%;
 margin:5px;
-opacity:0.7;
+opacity:0.5;
+transition:0.3s;
 }
   
   .whatsapp{
@@ -141,13 +173,22 @@ padding:15px 20px;
 
 
   <div class="banner">
-  <div class="pontos">
-  <span></span>
-  <span></span>
-  <span></span>
-  </div>
+
+  <div class="slides">
+
+    <img src="foto1.jpg" class="slide active">
+    <img src="foto2.jpg" class="slide">
+    <img src="foto3.jpg" class="slide">
 
   </div>
+
+  <div class="pontos">
+    <span class="ativo"></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</div>
   <!--FIM DO BANER-->
   
  <div id="menuOpcoes" class="opcoes">
@@ -229,8 +270,37 @@ function abrirMenu(){
     menu.classList.remove("aberto");
   }
 });
+  /*SLIDER */
+  
+const slides = document.querySelectorAll(".slide");
+const pontos = document.querySelectorAll(".pontos span");
 
+let index = 0;
+
+function trocarSlide(){
+
+  slides.forEach(slide => {
+    slide.classList.remove("active");
+  });
+
+  pontos.forEach(ponto => {
+    ponto.classList.remove("ativo");
+  });
+
+  index++;
+
+  if(index >= slides.length){
+    index = 0;
+  }
+
+  slides[index].classList.add("active");
+  pontos[index].classList.add("ativo");
+}
+
+setInterval(trocarSlide, 3000);
 });
+
+  
 </script>
 
 </body>
