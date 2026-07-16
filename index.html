@@ -45,18 +45,18 @@ overflow-x:hidden;
   top:0;
   right:0;
   width:320px;
-  height:100%;
+  height:100vh;
   overflow-y:auto;
   overflow-x:hidden;
   -webkit-overflow-scrolling:touch;
   background:#111;
   color:#fff;
   transition: transform 0.3s ease;
-  transform: translateX(100%);
+  transform:translateX(100%);
   z-index:9999;
   padding-top:60px;
 }
-
+  
   .titulo{
   padding:20px;
   cursor:pointer;
@@ -170,8 +170,9 @@ font-size:15px;
 }
 
 .item.ativo .conteudo{
-max-height:200px;
+max-height:500px;
 padding:15px 20px;
+overflow-y:auto;
 }
  .sobre{
 width:100%;
