@@ -350,6 +350,11 @@ transform:scale(1.03);
     transition:.3s;
 }
 
+ .lightbox.ativo{
+    display:flex;
+
+  }
+  
 .lightbox.ativo img{
     transform:scale(1);
 }
@@ -454,12 +459,12 @@ Cada projeto desenvolvido pela 3D Have é único. Trabalhamos com impressões 3D
 </p>
     
   <div class="grid-galeria">
-
-   <img src="galeria1.jpg" onclick="abrirImagem(this.src)">
-<img src="galeria2.jpg" onclick="abrirImagem(this.src)">
-<img src="galeria3.jpg" onclick="abrirImagem(this.src)">
-<img src="galeria4.jpg" onclick="abrirImagem(this.src)">
-
+    
+<img src="galeria1.jpg" onclick="abrirImagem('galeria1.jpg')">
+<img src="galeria2.jpg" onclick="abrirImagem('galeria2.jpg')">
+<img src="galeria3.jpg" onclick="abrirImagem('galeria3.jpg')">
+<img src="galeria4.jpg" onclick="abrirImagem('galeria4.jpg')">
+ 
   </div>
 
 </section>
