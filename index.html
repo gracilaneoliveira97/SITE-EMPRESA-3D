@@ -328,6 +328,29 @@ transform:scale(1.03);
     font-size:18px;
     line-height:1.8;
 }
+
+  .lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:15px;
+}
+
+.lightbox.ativo{
+    display:flex;
+}
   
   @media(max-width:768px){
 
@@ -430,10 +453,10 @@ Cada projeto desenvolvido pela 3D Have é único. Trabalhamos com impressões 3D
     
   <div class="grid-galeria">
 
-    <img src="galeria1.jpg">
-    <img src="galeria2.jpg">
-    <img src="galeria3.jpg">
-    <img src="galeria4.jpg">
+   <img src="galeria1.jpg" onclick="abrirImagem(this.src)">
+<img src="galeria2.jpg" onclick="abrirImagem(this.src)">
+<img src="galeria3.jpg" onclick="abrirImagem(this.src)">
+<img src="galeria4.jpg" onclick="abrirImagem(this.src)">
 
   </div>
 
@@ -536,6 +559,7 @@ Cada projeto desenvolvido pela 3D Have é único. Trabalhamos com impressões 3D
 </a>
   
 <script>
+  
 document.addEventListener("DOMContentLoaded", function(){
 
 function abrirMenu(){
@@ -606,8 +630,25 @@ function trocarSlide(){
 }
 
 setInterval(trocarSlide, 6000);
+
+  function abrirImagem(src){
+
+    document.getElementById("imagemGrande").src = src;
+
+    document.getElementById("lightbox").classList.add("ativo");
+
+}
+
+function fecharImagem(){
+
+    document.getElementById("lightbox").classList.remove("ativo");
+
+}
 });
 
+  <div id="lightbox" class="lightbox" onclick="fecharImagem()">
+    <img id="imagemGrande">
+</div>
   
 </script>
 
