@@ -346,10 +346,12 @@ transform:scale(1.03);
     max-width:90%;
     max-height:90%;
     border-radius:15px;
+    transform:scale(.8);
+    transition:.3s;
 }
 
-.lightbox.ativo{
-    display:flex;
+.lightbox.ativo img{
+    transform:scale(1);
 }
   
   @media(max-width:768px){
@@ -558,6 +560,10 @@ Cada projeto desenvolvido pela 3D Have é único. Trabalhamos com impressões 3D
 💬
 </a>
   
+    <div id="lightbox" class="lightbox" onclick="fecharImagem()">
+    <img id="imagemGrande">
+</div>
+  
 <script>
   
 document.addEventListener("DOMContentLoaded", function(){
@@ -631,25 +637,19 @@ function trocarSlide(){
 
 setInterval(trocarSlide, 6000);
 
-  function abrirImagem(src){
+window.abrirImagem = function(src){
 
     document.getElementById("imagemGrande").src = src;
-
     document.getElementById("lightbox").classList.add("ativo");
 
 }
 
-function fecharImagem(){
+window.fecharImagem = function(){
 
     document.getElementById("lightbox").classList.remove("ativo");
-
 }
 });
-
-  <div id="lightbox" class="lightbox" onclick="fecharImagem()">
-    <img id="imagemGrande">
-</div>
-  
+ 
 </script>
 
 </body>
