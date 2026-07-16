@@ -48,7 +48,7 @@ overflow-x:hidden;
   height:100vh;
   overflow-y:auto;
   overflow-x:hidden;
-  padding-bottom:30px;
+  padding-bottom:40px;
   -webkit-overflow-scrolling:touch;
   background:#080808;
   color:#fff;
@@ -697,9 +697,16 @@ document.querySelector(".menu").addEventListener("click", function(e){
 
       itens.forEach(i => i.classList.remove("ativo"));
 
-      if(!jaAberto){
-        item.classList.add("ativo");
-      }
+    if(!jaAberto){
+    item.classList.add("ativo");
+
+    setTimeout(() => {
+        item.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    },300);
+}
     });
   });
 
