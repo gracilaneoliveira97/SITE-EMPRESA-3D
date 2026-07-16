@@ -47,6 +47,8 @@ overflow-x:hidden;
   width:320px;
   height:100%;
   overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
   background:#111;
   color:#fff;
   transition: transform 0.3s ease;
@@ -611,7 +613,8 @@ function abrirMenu(){
  
  document.querySelector(".menu").addEventListener("click", function(e){
   e.stopPropagation();
-  menu.classList.add("aberto"); 
+  menu.classList.add("aberto");
+  document.body.style.overflow = "hidden";
 });
 
   titulos.forEach(titulo => {
@@ -637,6 +640,7 @@ function abrirMenu(){
   if(!menu.contains(e.target) && !e.target.classList.contains("menu")){
     itens.forEach(i => i.classList.remove("ativo"));
     menu.classList.remove("aberto");
+    document.body.style.overflow = "";
   }
 });
   /*SLIDER */
