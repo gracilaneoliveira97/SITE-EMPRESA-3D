@@ -679,10 +679,11 @@ function abrirMenu(){
   const itens = document.querySelectorAll(".item");
   const menu = document.getElementById("menuOpcoes");
  
- document.querySelector(".menu").addEventListener("click", function(e){
+document.querySelector(".menu").addEventListener("click", function(e){
   e.stopPropagation();
   menu.classList.add("aberto");
   document.body.style.overflow = "hidden";
+  document.querySelector(".menu").style.display = "none";
 });
 
   titulos.forEach(titulo => {
@@ -707,8 +708,9 @@ function abrirMenu(){
  document.addEventListener("click", function(e){
   if(!menu.contains(e.target) && !e.target.classList.contains("menu")){
     itens.forEach(i => i.classList.remove("ativo"));
-    menu.classList.remove("aberto");
-    document.body.style.overflow = "";
+   menu.classList.remove("aberto");
+document.body.style.overflow = "";
+document.querySelector(".menu").style.display = "block";
   }
 });
   /*SLIDER */
