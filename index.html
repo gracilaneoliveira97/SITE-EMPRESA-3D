@@ -45,7 +45,7 @@ overflow-x:hidden;
   top:0;
   right:0;
   width:280px;
-  height:100vh;
+  height:100dvh;
   overflow-y:auto;
   overflow-x:hidden;
   padding-bottom:40px;
@@ -195,7 +195,7 @@ font-size:15px;
 .item.ativo .conteudo{
 max-height:2000px;
 padding:15px 20px;
-overflow:visible;
+overflow:hidden;
 }
  .sobre{
 width:100%;
@@ -700,13 +700,6 @@ document.querySelector(".menu").addEventListener("click", function(e){
     if(!jaAberto){
     item.classList.add("ativo");
 
-    setTimeout(() => {
-        item.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-    },300);
-}
     });
   });
 
