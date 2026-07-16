@@ -63,8 +63,21 @@ overflow-x:hidden;
 
 .opcoes::-webkit-scrollbar{
   display:none; /* Chrome, Safari e iPhone */
+} 
+
+  .menu-topo{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:25px 0 20px;
+margin-bottom:15px;
 }
-  
+
+.menu-topo img{
+width:90px;
+opacity:.95;
+}
+
   .titulo{
   padding:20px;
   cursor:pointer;
@@ -160,7 +173,7 @@ box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
   
 .item{
-border-bottom:nome;
+border-bottom:none;
 }
 
 .titulo{
@@ -341,6 +354,35 @@ transform:scale(1.03);
     transform:scale(1.05);
 }
 
+  .botao-menu{
+display:inline-block;
+margin-top:15px;
+padding:12px 20px;
+background:#d4af37;
+color:#000;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+  .botao-menu:hover{
+transform:scale(1.05);
+}
+  
+  .link-contato{
+display:block;
+color:#fff;
+text-decoration:none;
+margin-top:12px;
+font-size:15px;
+transition:.3s;
+}
+
+.link-contato:hover{
+color:#d4af37;
+}
+
   .texto-galeria{
     max-width:850px;
     margin:0 auto 45px;
@@ -378,29 +420,9 @@ transform:scale(1.03);
 .lightbox.ativo img{
     transform:scale(1);
 }
-  
-  @media(max-width:768px){
-  } 
-  /*cabeçalho do menu */
-.menu-topo{
-    padding:25px;
-    border-bottom:1px solid rgba(212,175,55,.15);
-}
 
-.menu-topo h2{
-    color:#d4af37;
-    margin:0;
-    font-size:24px;
-}
 
-.menu-topo p{
-    color:#aaa;
-    font-size:14px;
-    margin-top:6px;
-}
-  
   @media(max-width:768px){
-  } 
   
 .banner{
 height:250px;
@@ -491,7 +513,7 @@ height:220px;
 
 </section>
   
-  <<section class="galeria" id="projetos">
+  <section class="galeria" id="projetos">
 
   <h1>PROJETOS DESENVOLVIDOS</h1>
 
@@ -572,12 +594,9 @@ Cada projeto desenvolvido pela 3D Have é único. Trabalhamos com impressões 3D
  
  <div id="menuOpcoes" class="opcoes">
  
-   <div class="menu-topo">
-     
  <div class="menu-topo">
     <img src="logo.png" alt="3D Have">
-    <p>Impressão 3D Personalizada</p>
-</div>
+    </div>
      
   <div class="item">
     <div class="titulo">Sobre</div>
@@ -614,22 +633,38 @@ Além da impressão 3D, também realizamos manutenção preventiva e corretiva e
 
   <div class="item">
     <div class="titulo">Contato</div>
-    <div class="conteudo">
-    <p>
-Acompanhe nossos projetos, novidades e bastidores pelo Instagram. Entre em contato conosco e solicite seu orçamento.
+ <div class="conteudo">
+
+<p>
+Entre em contato conosco para solicitar um orçamento ou tirar dúvidas.
+Será um prazer transformar sua ideia em realidade.
 </p>
 
-<a href="https://www.instagram.com/3d_have" target="_blank">
-📷 Instagram: @3d_have
+<a href="https://wa.me/5511948479738"
+target="_blank"
+class="link-contato">
+💬 WhatsApp
 </a>
-      
-    </div>
-  </div>
+
+<a href="mailto:SEUEMAIL@EMAIL.COM"
+class="link-contato">
+✉️ maycks158@gmail.com
+</a>
+
+<a href="https://www.instagram.com/3d_have"
+target="_blank"
+class="link-contato">
+📷 Instagram @3D_Have
+</a>
 
 </div>
 
-<a href="https://wa.me/5511948479738" class="whatsapp" target="_blank">
-💬
+  </div>
+
+<a href="https://www.instagram.com/3d_have"
+target="_blank"
+class="link-contato">
+📷 Instagram: @3D_Have
 </a>
   
     <div id="lightbox" class="lightbox" onclick="fecharImagem()">
