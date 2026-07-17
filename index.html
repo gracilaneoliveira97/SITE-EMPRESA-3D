@@ -48,7 +48,7 @@ overflow-x:hidden;
   height:100dvh;
   overflow-y:auto;
   overflow-x:hidden;
-  padding-bottom:40px;
+  padding-bottom:60px;
   -webkit-overflow-scrolling:touch;
   background:#080808;
   color:#fff;
@@ -193,9 +193,9 @@ font-size:15px;
 }
 
 .item.ativo .conteudo{
-max-height:2000px;
+max-height:500px;
 padding:15px 20px;
-overflow:hidden;
+overflow-y:visible;
 }
  .sobre{
 width:100%;
@@ -373,10 +373,10 @@ transform:scale(1.05);
   
   .link-contato{
 display:block;
-color:#fff;
+color:#ffffff;
 text-decoration:none;
-margin-top:12px;
-font-size:15px;
+margin-top:15px;
+font-size:16px;
 transition:.3s;
 }
 
@@ -668,28 +668,41 @@ class="link-contato">
     <div id="lightbox" class="lightbox" onclick="fecharImagem()">
     <img id="imagemGrande">
 </div>
-  
+
 <script>
-  
 document.addEventListener("DOMContentLoaded", function(){
 
-function abrirMenu(){
-  document.getElementById("menuOpcoes").classList.toggle("aberto");
-}
-  // deixa a função global pro onclick funcionar
-  window.abrirMenu = abrirMenu;
-
+  const menu = document.getElementById("menuOpcoes");
+  const botaoHamburguer = document.querySelector(".menu");
   const titulos = document.querySelectorAll(".titulo");
   const itens = document.querySelectorAll(".item");
-  const menu = document.getElementById("menuOpcoes");
- 
-document.querySelector(".menu").addEventListener("click", function(e){
-  e.stopPropagation();
-  menu.classList.add("aberto");
-  document.body.style.overflow = "hidden";
-  document.querySelector(".menu").style.display = "none";
-});
 
+  // Função para abrir o menu lateral
+  function abrirMenu(){
+    menu.classList.add("aberto");
+    document.body.style.overflow = "hidden"; // Trava o scroll do fundo
+    botaoHamburguer.style.display = "none";   // Esconde o botão hambúrguer
+  }
+  
+  // Torna a função global (caso precise chamar por onclick inline)
+  window.abrirMenu = abrirMenu;
+
+  // Função para fechar o menu lateral
+  function fecharMenu(){
+    itens.forEach(i => i.classList.remove("ativo")); // Fecha sanfonas internas
+    menu.classList.remove("aberto");
+    document.body.style.overflow = "";               // Libera o scroll do fundo
+    botaoHamburguer.style.display = "block";         // Mostra o botão hambúrguer novamente
+  }
+  window.fecharMenu = fecharMenu;
+
+  // Evento para abrir o menu ao clicar no ícone de 3 risquinhos
+  botaoHamburguer.addEventListener("click", function(e){
+    e.stopPropagation();
+    abrirMenu();
+  });
+
+  // Controla o efeito sanfona (accordion) dentro do menu
   titulos.forEach(titulo => {
     titulo.addEventListener("click", function(e){
       e.stopPropagation();
@@ -699,68 +712,74 @@ document.querySelector(".menu").addEventListener("click", function(e){
 
       itens.forEach(i => i.classList.remove("ativo"));
 
-    if(!jaAberto){
-    item.classList.add("ativo");
-    }
-
+      if(!jaAberto){
+        item.classList.add("ativo");
+      }
     });
   });
 
+  // Evita que cliques internos dentro do menu fechem ele acidentalmente
   menu.addEventListener("click", function(e){
     e.stopPropagation();
   });
 
- document.addEventListener("click", function(e){
-  if(!menu.contains(e.target) && !e.target.classList.contains("menu")){
-    itens.forEach(i => i.classList.remove("ativo"));
-   menu.classList.remove("aberto");
-document.body.style.overflow = "";
-document.querySelector(".menu").style.display = "block";
-  }
-});
-  /*SLIDER */
-  
-const slides = document.querySelectorAll(".slide");
-const pontos = document.querySelectorAll(".pontos span");
-
-let index = 0;
-
-function trocarSlide(){
-
-  slides.forEach(slide => {
-    slide.classList.remove("active");
+  // Fecha o menu ao clicar em qualquer link de navegação interno (ex: "Ver portfólio" ou "WhatsApp")
+  const linksMenu = menu.querySelectorAll("a");
+  linksMenu.forEach(link => {
+    link.addEventListener("click", function(){
+      fecharMenu();
+    });
   });
 
-  pontos.forEach(ponto => {
-    ponto.classList.remove("ativo");
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener("click", function(e){
+    if(!menu.contains(e.target) && e.target !== botaoHamburguer){
+      fecharMenu();
+    }
   });
 
-  index++;
+  /* SLIDER */
+  const slides = document.querySelectorAll(".slide");
+  const pontos = document.querySelectorAll(".pontos span");
+  let index = 0;
 
-  if(index >= slides.length){
-    index = 0;
+  function trocarSlide(){
+    slides.forEach(slide => {
+      slide.classList.remove("active");
+    });
+
+    pontos.forEach(ponto => {
+      ponto.classList.remove("ativo");
+    });
+
+    index++;
+
+    if(index >= slides.length){
+      index = 0;
+    }
+
+    slides[index].classList.add("active");
+    pontos[index].classList.add("ativo");
   }
 
-  slides[index].classList.add("active");
-  pontos[index].classList.add("ativo");
-}
+  setInterval(trocarSlide, 6000);
 
-setInterval(trocarSlide, 6000);
-
-window.abrirImagem = function(src){
-
+  /* LIGHTBOX (Galeria de Imagens) */
+  window.abrirImagem = function(src){
     document.getElementById("imagemGrande").src = src;
     document.getElementById("lightbox").classList.add("ativo");
+  }
 
-}
-
-window.fecharImagem = function(){
-
+  window.fecharImagem = function(){
     document.getElementById("lightbox").classList.remove("ativo");
-}
+  }
 });
- 
 </script>
 
+  
 </body>
+
 </html>
+
+  
+
