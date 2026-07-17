@@ -715,7 +715,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
       if(!jaAberto){
         item.classList.add("ativo");
-        item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+        setTimeout(() => {
+          item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
       }
     });
   });
