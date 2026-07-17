@@ -183,20 +183,26 @@ font-size:19px;
 font-weight:bold;
 }
 
-.conteudo{
-max-height:0;
-overflow:hidden;
-transition:max-height 0.4s ease;
-background:#080808; !important;
-padding:0 20px;
-color:#fff;
-font-size:15px;
+.conteudo {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #080808 !important; /* Corrigido o posicionamento do !important */
+  padding: 0 20px;
+  color: #fff;
+  font-size: 15px;
 }
 
-.item.ativo .conteudo{
-max-height:500px;
-padding:15px 20px;
-overflow-y:visible;
+.item.ativo .conteudo {
+  max-height: 500px;
+  padding: 5px 20px 15px; /* Mantém o topo bem justinho com 5px */
+  overflow-y: visible;
+}
+
+/* Adicione estas duas regras logo abaixo para remover a margem dos parágrafos internos */
+.conteudo p {
+  margin-top: 5px;      /* Diminui o espaço antes de começar o texto */
+  margin-bottom: 10px;  /* Diminui o espaço entre um parágrafo e outro */
 }
  .sobre{
 width:100%;
